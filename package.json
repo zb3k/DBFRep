@@ -1,0 +1,10 @@
+{
+  "name": "dbfrep",
+  "version": "1.0.0",
+  "description": "",
+  "author": "zb3k",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
