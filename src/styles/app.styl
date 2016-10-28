@@ -1,0 +1,71 @@
+@import "kouto-swiss"
+
+meyer-reset()
+
+$btn-border-radius = 3px
+$btn-background = #EEE
+$btn-color = #FFF
+$btn-active-color = #55b4c4
+
+html, body, .container
+  height 100%
+
+body, *
+  font 13px/20px Monaco, monospace
+  color #333
+
+section
+  &.settings, &.result
+    float left
+    min-height 100%
+
+  &.settings
+    background #DDD
+    width 50%
+
+  &.result
+    width 50%
+
+.panel
+  margin 10px
+  background #0001
+  padding 5px
+
+
+input, textarea
+  border none
+  border-radius $btn-border-radius
+  padding 5px 10px
+  outline none
+
+.btn
+  display inline-block
+  vertical-align top
+  background $btn-background
+  padding 5px 15px
+  border-radius $btn-border-radius
+  cursor pointer
+  // border 1px solid darken($btn-background, 30)
+
+  &.active
+    background $btn-active-color
+    // border-color darken($btn-active-color, 15)
+    position relative
+    z-index 1
+
+.btn-group
+  display inline-block
+  vertical-align top
+  border-radius $btn-border-radius
+
+  .btn
+    display block
+    float left
+    border-radius 0
+    margin-left 1px
+
+    &:first-child
+      border-radius $btn-border-radius 0 0 $btn-border-radius
+
+    &:last-child
+      border-radius 0 $btn-border-radius $btn-border-radius 0
