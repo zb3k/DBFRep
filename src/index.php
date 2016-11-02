@@ -35,7 +35,7 @@ $config = (object)[
 <div class="container">
 
     <section class="settings">
-        <div class="panel">
+        <div class="panel panel-opened">
             <div class="panel-heading">
                 Connect to DB
                 <div class="pull-right">
@@ -81,20 +81,20 @@ $config = (object)[
                 </div>
             </div>
         </div>
-        <div class="panel">
+        <div class="panel panel-closed">
             <div class="panel-heading">Filter Tables</div>
         </div>
-        <div class="panel">
+        <div class="panel panel-closed">
             <div class="panel-heading">Filter Columns</div>
         </div>
-        <div class="panel">
+        <div class="panel panel-closed">
             <div class="panel-heading">Filter data</div>
         </div>
-        <div class="panel">
+        <div class="panel panel-closed">
             <div class="panel-heading">Find &amp; Replace</div>
         </div>
 
-        <div class="panel">
+        <div class="panel panel-opened">
             <div class="panel-heading">Panle heading</div>
 
             <div class="panel-form">

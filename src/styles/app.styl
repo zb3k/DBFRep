@@ -1,10 +1,10 @@
 @import "kouto-swiss"
+@import '../../node_modules/jeet/styl/index';
 
 meyer-reset()
 
 $accent-color = #e04319
-$btn-border-radius = 0
-$btn-background = #EEE
+$btn-background = #DDD
 $btn-color = #FFF
 $btn-active-color = $accent-color
 
@@ -13,7 +13,7 @@ html, body, .container
   height 100%
 
 body, *
-  font 13px/20px Monaco, monospace
+  font 13px/20px 'Monaco', monospace
   color #333
   box-sizing border-box
 
@@ -22,15 +22,17 @@ body, *
 
 section
   &.settings, &.result
+    // min-width 800px
+    // margin 0 auto
     float left
     min-height 100%
 
   &.settings
     background #0001
-    width 50%
+    width 40%
 
   &.result
-    width 50%
+    width 60%
 
 .panel
   // margin 10px
@@ -39,18 +41,38 @@ section
   position relative
   min-height: 20px
 
+  &.panel-opened
+    > *
+      display block
+  &.panel-closed
+    > *
+      display none
+    .panel-heading
+      display block
+    .panel-heading:before
+      content '\25B6'
+
 .panel-heading
   padding 15px 10px 15px 15px
-  color mix(#FFF, $accent-color, 85)
-  font-family sans-serif
-  font-size 15px
-  text-shadow 0 1px 3px #0003
+  color mix(#FFF, $accent-color, 90)
+  font-size 115%
+  text-shadow 0 1px 1px #0001
   background $accent-color
   box-shadow inset 0 2px 0 #0005
 
+  &:before
+    content '\25BC'
+    font-size 80%
+    display block
+    float left
+    margin-right 5px
+    opacity .5
+    text-shadow 0 1px 1px #FFF5
+    color #000
+
+
   .btn
     background #FFF2
-    border-color transparent
     color @color
     margin-top -5px
 
@@ -60,29 +82,31 @@ section
       background #fff
 
 .panel-form
-  padding 15px
-  // border-bottom 2px dashed $accent-color
+  padding 20px 15px 5px
 
   &.panel-alt
-    border-top 2px solid $accent-color
+    // border-top 2px solid $accent-color
     background #0001
 
   label
     color #999
-    font-size 12px
-    line-height 14px
+    font-size 95%
     display block
+    line-height 100%
+    padding-bottom 3px
 
 {$input_fields}
   border none
-  border-radius $btn-border-radius
   padding 5px 10px
   outline none
-  border 1px solid darken($btn-background, 10)
-  background #fff
-  margin-bottom 10px
+  background #FFF
+  // background none
+  margin-bottom 20px
+  // box-shadow inset 0 -2px 0 #0003
+
   &:focus
-    border-color $accent-color
+    // background #FFF
+    box-shadow inset 0 0 0 2px $accent-color
 .select
   padding 0
   position relative
@@ -104,13 +128,13 @@ section
     border none
     background transparent
     -webkit-appearance none
-    border-radius $btn-border-radius
+    border-radius 0
     padding 0 10px
     position relative
     z-index 1
 
     &:focus
-      box-shadow 0 0 0 1px $accent-color
+      box-shadow inset 0 -2px 0 $accent-color
 
 .btn
   text-decoration none
@@ -118,9 +142,7 @@ section
   vertical-align top
   background $btn-background
   padding 5px 15px
-  border-radius $btn-border-radius
   cursor pointer
-  border 1px solid darken($btn-background, 20)
   text-shadow none
 
   &:hover
@@ -129,15 +151,14 @@ section
     &:after
       content ''
       position absolute
-      bottom -1px
-      left -1px
-      right -1px
-      height 3px
-      background darken($btn-active-color, 10)
+      bottom 0
+      left 0
+      right 0
+      height 2px
+      background $accent-color
 
   &.active
     background $btn-active-color
-    border-color darken($btn-active-color, 15)
     position relative
     z-index 1
     color #fff
@@ -145,19 +166,17 @@ section
 .btn-group
   display inline-block
   vertical-align top
-  border-radius $btn-border-radius
+  background darken($btn-active-color, 0)
+  padding 2px
 
   .btn
     display block
     float left
-    border-radius 0
-    margin-left -1px
+    margin-left 2px
+    padding 3px 15px
 
     &:first-child
-      border-radius $btn-border-radius 0 0 $btn-border-radius
-
-    &:last-child
-      border-radius 0 $btn-border-radius $btn-border-radius 0
+      margin 0
 
 .btn-dropdown
   li
@@ -171,7 +190,7 @@ section
 
 
 .gs
-  gs("fluid", 12, 5%)
+  clearfix()
 
   {$input_fields}
     display block
@@ -182,4 +201,5 @@ section
 
   for $i in 1..12
     .col-{$i}
-      col($i)
+      span($i/12)
+      padding 0 15px
