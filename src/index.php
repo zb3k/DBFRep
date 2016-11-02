@@ -4,7 +4,6 @@ if (!defined('_HELPERS_LOADED')) {
     require_once __DIR__.'/common/helpers.php';
 }
 
-
 $config = (object)[
     'pdo' => [
         'username'   => 'root',
@@ -36,19 +35,76 @@ $config = (object)[
 <div class="container">
 
     <section class="settings">
-        <div class="panel">Connect to DB</div>
-        <div class="panel">Filter Tables</div>
-        <div class="panel">Filter Columns</div>
-        <div class="panel">Filter data</div>
-        <div class="panel">Find &amp; Replace</div>
         <div class="panel">
-            Panle text
-            <input type="text" placeholder="Panel input">
-            <span class="btn">Button</span>
-            <div class="btn-group">
-                <span class="btn active">A</span>
-                <span class="btn">B</span>
-                <span class="btn">C</span>
+            <div class="panel-heading">
+                Connect to DB
+                <div class="pull-right">
+                    <a href="#" class="btn active">Advanced</a>
+                    <a href="#" class="btn">Reset</a>
+                    <a href="#" class="btn">Test</a>
+                </div>
+            </div>
+            <div class="panel-form gs">
+                <div class='col-4'>
+                    <label>Username:</label>
+                    <?=html_input('text', 'username') ?>
+                </div>
+                <div class='col-4'>
+                    <label>Password:</label>
+                    <?=html_input('password', 'password') ?>
+                </div>
+                <div class='col-4'>
+                    <label>Database:</label>
+                    <?=html_input('text', 'database') ?>
+                </div>
+            </div>
+            <div class="panel-form gs panel-alt">
+                <div class='col-4'>
+                    <label>Charset:</label>
+                    <?=html_input('text', 'charset', 'UTF8', ['size'=>16]) ?>
+                </div>
+                <div class='col-4'>
+                    <label>Host:</label>
+                    <?=html_input('text', 'host', 'localhost') ?>
+                </div>
+                <div class='col-4'>
+                    <label>Port:</label>
+                    <?=html_input('text', 'port', '3306') ?>
+                </div>
+                <div class='col-4'>
+                    <label>Driver:</label>
+                    <span class="select"><?=html_select('driver', 'mysql', pdo_drivers()) ?></span>
+                </div>
+                <div class='col-8'>
+                    <label>Unix socket:</label>
+                    <?=html_input('text', 'unix_socket') ?>
+                </div>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-heading">Filter Tables</div>
+        </div>
+        <div class="panel">
+            <div class="panel-heading">Filter Columns</div>
+        </div>
+        <div class="panel">
+            <div class="panel-heading">Filter data</div>
+        </div>
+        <div class="panel">
+            <div class="panel-heading">Find &amp; Replace</div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-heading">Panle heading</div>
+
+            <div class="panel-form">
+                <input type="text" placeholder="Panel input">
+                <span class="btn">Button</span>
+                <div class="btn-group">
+                    <span class="btn active">A</span>
+                    <span class="btn">B</span>
+                    <span class="btn">C</span>
+                </div>
             </div>
         </div>
     </section>

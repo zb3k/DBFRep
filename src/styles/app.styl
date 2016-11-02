@@ -2,17 +2,23 @@
 
 meyer-reset()
 
-$btn-border-radius = 3px
+$accent-color = #e04319
+$btn-border-radius = 0
 $btn-background = #EEE
 $btn-color = #FFF
-$btn-active-color = #55b4c4
+$btn-active-color = $accent-color
 
+$input_fields = "input[type=text], input[type=password], textarea, .select"
 html, body, .container
   height 100%
 
 body, *
   font 13px/20px Monaco, monospace
   color #333
+  box-sizing border-box
+
+.pull-right
+  float right
 
 section
   &.settings, &.result
@@ -20,38 +26,121 @@ section
     min-height 100%
 
   &.settings
-    background #DDD
+    background #0001
     width 50%
 
   &.result
     width 50%
 
 .panel
-  margin 10px
-  background #0001
-  padding 5px
+  // margin 10px
+  // margin-bottom 1px
+  background #EEE
+  position relative
+  min-height: 20px
 
+.panel-heading
+  padding 15px 10px 15px 15px
+  color mix(#FFF, $accent-color, 85)
+  font-family sans-serif
+  font-size 15px
+  text-shadow 0 1px 3px #0003
+  background $accent-color
+  box-shadow inset 0 2px 0 #0005
 
-input, textarea
+  .btn
+    background #FFF2
+    border-color transparent
+    color @color
+    margin-top -5px
+
+    &.active
+      background #0004
+    &:hover:after
+      background #fff
+
+.panel-form
+  padding 15px
+  // border-bottom 2px dashed $accent-color
+
+  &.panel-alt
+    border-top 2px solid $accent-color
+    background #0001
+
+  label
+    color #999
+    font-size 12px
+    line-height 14px
+    display block
+
+{$input_fields}
   border none
   border-radius $btn-border-radius
   padding 5px 10px
   outline none
+  border 1px solid darken($btn-background, 10)
+  background #fff
+  margin-bottom 10px
+  &:focus
+    border-color $accent-color
+.select
+  padding 0
+  position relative
+
+  &:after
+    content '\2193';
+    position absolute
+    top 0
+    right 5px
+    font-size 20px
+    color #0005
+    line-height 28px
+
+
+  select
+    outline none
+    height 30px
+    width 100%
+    border none
+    background transparent
+    -webkit-appearance none
+    border-radius $btn-border-radius
+    padding 0 10px
+    position relative
+    z-index 1
+
+    &:focus
+      box-shadow 0 0 0 1px $accent-color
 
 .btn
+  text-decoration none
   display inline-block
   vertical-align top
   background $btn-background
   padding 5px 15px
   border-radius $btn-border-radius
   cursor pointer
-  // border 1px solid darken($btn-background, 30)
+  border 1px solid darken($btn-background, 20)
+  text-shadow none
+
+  &:hover
+    position relative
+
+    &:after
+      content ''
+      position absolute
+      bottom -1px
+      left -1px
+      right -1px
+      height 3px
+      background darken($btn-active-color, 10)
 
   &.active
     background $btn-active-color
-    // border-color darken($btn-active-color, 15)
+    border-color darken($btn-active-color, 15)
     position relative
     z-index 1
+    color #fff
 
 .btn-group
   display inline-block
@@ -62,10 +151,35 @@ input, textarea
     display block
     float left
     border-radius 0
-    margin-left 1px
+    margin-left -1px
 
     &:first-child
       border-radius $btn-border-radius 0 0 $btn-border-radius
 
     &:last-child
       border-radius 0 $btn-border-radius $btn-border-radius 0
+
+.btn-dropdown
+  li
+    display none
+
+    &.active
+      display block
+  &:hover
+    li
+      display block
+
+
+.gs
+  gs("fluid", 12, 5%)
+
+  {$input_fields}
+    display block
+    width 100%
+
+  // &.gs-3 > *
+  //   col(4)
+
+  for $i in 1..12
+    .col-{$i}
+      col($i)
